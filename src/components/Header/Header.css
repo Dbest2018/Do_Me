@@ -1,0 +1,29 @@
+.header {
+  padding: 2rem;
+}
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.header__nav-logo {
+  color: var(--l-gray);
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+}
+.header__search {
+  background-color: var(--l-gray);
+  padding: 1rem 0.75rem;
+  border-radius: 0.25rem;
+  max-width: 400px;
+}
+.header__search-text {
+  font-family: "Josefin Sans", sans-serif;
+  margin-left: 0.75rem;
+  border: none;
+  background-color: var(--l-gray);
+}
+.header__search-text:focus {
+  outline: none;
+}
