@@ -13,7 +13,7 @@
   letter-spacing: 0.5rem;
 }
 .header__search {
-  background-color: var(--l-gray);
+  background-color: white;
   padding: 1rem 0.75rem;
   border-radius: 0.25rem;
   max-width: 400px;
@@ -22,7 +22,7 @@
   font-family: "Josefin Sans", sans-serif;
   margin-left: 0.75rem;
   border: none;
-  background-color: var(--l-gray);
+  background-color: white;
 }
 .header__search-text:focus {
   outline: none;

@@ -10,3 +10,8 @@
   background-size: cover;
   height: 200px;
 }
+
+.app__footer {
+  color: var(--dark-grayblue);
+  text-align: center;
+}
