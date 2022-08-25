@@ -3,7 +3,6 @@
   padding: 1rem 0.75rem;
   border-radius: 0.25rem;
   border-top: 1px solid var(--l-grayblue);
-  max-width: 400px;
   display: flex;
   justify-content: space-between;
 }

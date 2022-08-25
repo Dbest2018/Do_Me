@@ -1,5 +1,6 @@
 .header {
   padding: 2rem;
+  max-width: 500px;
 }
 .header__nav {
   display: flex;
@@ -16,7 +17,6 @@
   background-color: white;
   padding: 1rem 0.75rem;
   border-radius: 0.25rem;
-  max-width: 400px;
 }
 .header__search-text {
   font-family: "Josefin Sans", sans-serif;
@@ -26,4 +26,10 @@
 }
 .header__search-text:focus {
   outline: none;
+}
+
+@media (min-width: 550px) {
+  .header {
+    margin: 0 auto;
+  }
 }
