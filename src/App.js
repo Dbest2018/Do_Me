@@ -7,14 +7,20 @@ import Nav from "./components/Nav/Nav";
 function App() {
   const [darkTheme, setdarkTheme] = useState(false);
   const style = {
-    color: `${darkTheme ? "var(--l-gray)" : "black"}`,
-    backgroundColor: `${darkTheme ? "var(--vdark-grayblue)" : "var(--l-gray)"}`,
+    color: darkTheme ? "var(--l-gray)" : "var(--vdark-grayblue)",
+    backgroundColor: `${darkTheme ? "var(--mdark-grayblue)" : "var(--l-gray)"}`,
+  };
+  const appStyle = {
+    ...style,
+    backgroundColor: `${
+      darkTheme ? "var(--vdark-grayblue)" : "var(--vl-grayblue)"
+    }`,
   };
   const toggleTheme = () => {
     setdarkTheme((prevTheme) => !prevTheme);
   };
   return (
-    <div className="app" style={style}>
+    <div className="app" style={appStyle}>
       <div className="app__header">
         <Header darkTheme={darkTheme} toggleTheme={toggleTheme} style={style} />
       </div>

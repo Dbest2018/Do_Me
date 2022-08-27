@@ -4,12 +4,6 @@ import moon from "../../images/icon-moon.svg";
 import sun from "../../images/icon-sun.svg";
 
 const Header = ({ darkTheme, style, toggleTheme }) => {
-  const headerStyle = {
-    ...style,
-    "::placeholder": {
-      color: `${darkTheme ? "var(--l-gray)" : "black"}`,
-    },
-  };
   return (
     <div className="header">
       <div className="header__nav">
@@ -19,11 +13,11 @@ const Header = ({ darkTheme, style, toggleTheme }) => {
         </div>
       </div>
 
-      <div className="header__search" style={headerStyle}>
+      <div className="header__search" style={style}>
         <input className="header__search-radio" type="radio" />
         <input
           className="header__search-text"
-          style={headerStyle}
+          style={style}
           type="text"
           placeholder="Create a new todo..."
         />

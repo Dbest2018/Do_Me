@@ -4,7 +4,7 @@ import "./Nav.css";
 const Nav = ({ darkTheme, style }) => {
   const navStyle = {
     ...style,
-    color: `${darkTheme ? "var(--l-gray)" : "var(--dark-grayblue)"}`,
+    color: `${darkTheme ? "var(--dark-grayblue)" : "var(--dark-grayblue)"}`,
   };
   return (
     <div className="nav" style={navStyle}>

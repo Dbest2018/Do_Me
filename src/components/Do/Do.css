@@ -11,6 +11,9 @@
   margin-left: 0.75rem;
   border: none;
 }
+.do__text::placeholder {
+  color: var(--dark-grayblue);
+}
 .do__text:focus {
   outline: none;
 }
