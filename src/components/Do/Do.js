@@ -2,7 +2,7 @@ import React from "react";
 import "./Do.css";
 import close from "../../images/icon-cross.svg";
 
-const Do = ({ darkTheme, style }) => {
+const Do = ({ style }) => {
   return (
     <div className="do">
       <input className="do__radio" type="radio" />
