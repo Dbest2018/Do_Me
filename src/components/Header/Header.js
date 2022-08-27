@@ -1,21 +1,29 @@
 import React from "react";
 import "./Header.css";
 import moon from "../../images/icon-moon.svg";
+import sun from "../../images/icon-sun.svg";
 
-const Header = () => {
+const Header = ({ darkTheme, style, toggleTheme }) => {
+  const headerStyle = {
+    ...style,
+    "::placeholder": {
+      color: `${darkTheme ? "var(--l-gray)" : "black"}`,
+    },
+  };
   return (
     <div className="header">
       <div className="header__nav">
         <div className="header__nav-logo">TODO</div>
-        <div className="header__nav-toggle">
-          <img src={moon} alt="moon" />
+        <div className="header__nav-toggle" onClick={() => toggleTheme()}>
+          <img src={darkTheme ? sun : moon} alt={darkTheme ? "sun" : "moon"} />
         </div>
       </div>
 
-      <div className="header__search">
+      <div className="header__search" style={headerStyle}>
         <input className="header__search-radio" type="radio" />
         <input
           className="header__search-text"
+          style={headerStyle}
           type="text"
           placeholder="Create a new todo..."
         />

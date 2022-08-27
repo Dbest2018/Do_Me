@@ -21,7 +21,6 @@ body {
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--l-gray);
 }
 
 .light-mode {

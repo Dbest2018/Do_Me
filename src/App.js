@@ -1,19 +1,28 @@
+import { useState } from "react";
 import "./App.css";
 import DoList from "./components/DoList/DoList";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 
 function App() {
+  const [darkTheme, setdarkTheme] = useState(false);
+  const style = {
+    color: `${darkTheme ? "var(--l-gray)" : "black"}`,
+    backgroundColor: `${darkTheme ? "var(--vdark-grayblue)" : "var(--l-gray)"}`,
+  };
+  const toggleTheme = () => {
+    setdarkTheme((prevTheme) => !prevTheme);
+  };
   return (
-    <div className="app">
+    <div className="app" style={style}>
       <div className="app__header">
-        <Header />
+        <Header darkTheme={darkTheme} toggleTheme={toggleTheme} style={style} />
       </div>
       <div className="app__main">
-        <DoList />
+        <DoList darkTheme={darkTheme} style={style} />
       </div>
       <div className="app__nav">
-        <Nav />
+        <Nav darkTheme={darkTheme} style={style} />
       </div>
       <div className="app__footer">Drag and drop to reorder list</div>
     </div>

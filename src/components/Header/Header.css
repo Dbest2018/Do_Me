@@ -13,6 +13,9 @@
   font-weight: bold;
   letter-spacing: 0.5rem;
 }
+.header__nav-toggle {
+  cursor: pointer;
+}
 .header__search {
   background-color: white;
   padding: 1rem 0.75rem;
@@ -23,6 +26,9 @@
   margin-left: 0.75rem;
   border: none;
   background-color: white;
+}
+.header__search-text::placeholder {
+  color: var(--dark-grayblue);
 }
 .header__search-text:focus {
   outline: none;
