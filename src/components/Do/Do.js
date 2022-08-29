@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Do.css";
 import close from "../../images/icon-cross.svg";
+import check from "../../images/icon-check.svg";
 
 const Do = ({ style, darkTheme }) => {
+  const [isCompleted, setIsCompleted] = useState(false);
   const doStyle = {
     borderBottom: darkTheme
       ? "1px solid var(--dark-grayblue)"
@@ -13,9 +15,26 @@ const Do = ({ style, darkTheme }) => {
       ? "1px solid var(--dark-grayblue)"
       : "1px solid var(--l-grayblue)",
   };
+
+  const toggleCompleted = () => {
+    setIsCompleted((prevCompleted) => !prevCompleted);
+  };
   return (
     <div className="do" style={doStyle}>
-      <div className="do__button" style={doButton}></div>
+      {isCompleted ? (
+        <img
+          className="do__check"
+          onClick={() => toggleCompleted()}
+          src={check}
+          alt="check"
+        />
+      ) : (
+        <div
+          className="do__button"
+          style={doButton}
+          onClick={() => toggleCompleted()}
+        ></div>
+      )}
       <input
         className="do__text"
         style={style}

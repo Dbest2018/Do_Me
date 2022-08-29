@@ -16,9 +16,11 @@ function App() {
       darkTheme ? "var(--vdark-grayblue)" : "var(--vl-grayblue)"
     }`,
   };
+
   const toggleTheme = () => {
     setdarkTheme((prevTheme) => !prevTheme);
   };
+
   return (
     <div className="app" style={appStyle}>
       <div className="app__header">
