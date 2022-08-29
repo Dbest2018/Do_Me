@@ -5,7 +5,7 @@ import close from "../../images/icon-cross.svg";
 const Do = ({ style }) => {
   return (
     <div className="do">
-      <input className="do__radio" type="radio" />
+      <div className="do__button"></div>
       <input
         className="do__text"
         style={style}

@@ -5,6 +5,12 @@
   display: flex;
   justify-content: space-between;
 }
+.do__button {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--l-grayblue);
+}
 .do__text {
   flex: 2;
   font-family: "Josefin Sans", sans-serif;

@@ -14,7 +14,7 @@ const Header = ({ darkTheme, style, toggleTheme }) => {
       </div>
 
       <div className="header__search" style={style}>
-        <input className="header__search-radio" type="radio" />
+        <div className="header__search-button"></div>
         <input
           className="header__search-text"
           style={style}
