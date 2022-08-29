@@ -1,7 +1,7 @@
 .do {
   padding: 1rem 0.75rem;
   border-radius: 0.25rem;
-  border-bottom: 1px solid var(--l-grayblue);
+  /* border-bottom: 1px solid var(--l-grayblue); */
   display: flex;
   justify-content: space-between;
 }
@@ -9,7 +9,7 @@
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--l-grayblue);
+  cursor: pointer;
 }
 .do__text {
   flex: 2;

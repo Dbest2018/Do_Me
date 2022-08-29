@@ -5,7 +5,7 @@ import Do from "../Do/Do";
 const DoList = ({ darkTheme, style }) => {
   const doListStyle = {
     ...style,
-    boxShadow: `0px 10px 10px ${
+    boxShadow: `0px 20px 20px ${
       darkTheme ? "rgba(0, 0, 0, .2)" : "var(--l-grayblue)"
     }`,
   };
