@@ -15,6 +15,10 @@ const Do = ({ style, darkTheme }) => {
       ? "1px solid var(--dark-grayblue)"
       : "1px solid var(--l-grayblue)",
   };
+  const inputStyle = {
+    ...style,
+    textDecoration: isCompleted && "line-through",
+  };
 
   const toggleCompleted = () => {
     setIsCompleted((prevCompleted) => !prevCompleted);
@@ -37,7 +41,7 @@ const Do = ({ style, darkTheme }) => {
       )}
       <input
         className="do__text"
-        style={style}
+        style={inputStyle}
         type="text"
         placeholder="Create a new todo..."
       />
