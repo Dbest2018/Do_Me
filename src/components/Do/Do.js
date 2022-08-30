@@ -3,7 +3,7 @@ import "./Do.css";
 import close from "../../images/icon-cross.svg";
 import check from "../../images/icon-check.svg";
 
-const Do = ({ style, darkTheme }) => {
+const Do = ({ style, darkTheme, id }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const doStyle = {
     borderBottom: darkTheme
@@ -41,7 +41,7 @@ const Do = ({ style, darkTheme }) => {
         ></div>
       )}
       <div className="do__text" style={textStyle}>
-        You have to do me, like now please do me.
+        Todo {id}
       </div>
       <img className="do__close" src={close} alt="close icon" />
     </div>

@@ -2,3 +2,6 @@
   margin: -2rem 2rem 2rem 2rem;
   border-radius: 0.5rem;
 }
+.do__item {
+  cursor: pointer;
+}
