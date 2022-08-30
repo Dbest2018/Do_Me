@@ -15,9 +15,10 @@ const Do = ({ style, darkTheme }) => {
       ? "1px solid var(--dark-grayblue)"
       : "1px solid var(--l-grayblue)",
   };
-  const inputStyle = {
+  const textStyle = {
     ...style,
     textDecoration: isCompleted && "line-through",
+    color: isCompleted ? "var(--dark-grayblue)" : "inherit",
   };
 
   const toggleCompleted = () => {
@@ -39,12 +40,9 @@ const Do = ({ style, darkTheme }) => {
           onClick={() => toggleCompleted()}
         ></div>
       )}
-      <input
-        className="do__text"
-        style={inputStyle}
-        type="text"
-        placeholder="Create a new todo..."
-      />
+      <div className="do__text" style={textStyle}>
+        You have to do me, like now please do me.
+      </div>
       <img className="do__close" src={close} alt="close icon" />
     </div>
   );
