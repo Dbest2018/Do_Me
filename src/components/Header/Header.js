@@ -3,11 +3,27 @@ import "./Header.css";
 import moon from "../../images/icon-moon.svg";
 import sun from "../../images/icon-sun.svg";
 
-const Header = ({ darkTheme, style, toggleTheme }) => {
+const Header = ({
+  darkTheme,
+  style,
+  toggleTheme,
+  todo,
+  todos,
+  setTodo,
+  setTodos,
+}) => {
   const headerButton = {
     border: darkTheme
       ? "1px solid var(--dark-grayblue)"
       : "1px solid var(--l-grayblue)",
+  };
+
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTodos((prevTodos) => [...prevTodos, todo]);
   };
   return (
     <div className="header">
@@ -18,15 +34,20 @@ const Header = ({ darkTheme, style, toggleTheme }) => {
         </div>
       </div>
 
-      <div className="header__search" style={style}>
+      <form
+        className="header__search"
+        style={style}
+        onSubmit={(e) => handleSubmit(e)}
+      >
         <div className="header__search-button" style={headerButton}></div>
         <input
           className="header__search-text"
           style={style}
           type="text"
           placeholder="Create a new todo..."
+          onChange={(e) => handleChange(e)}
         />
-      </div>
+      </form>
     </div>
   );
 };
