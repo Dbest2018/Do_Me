@@ -34,6 +34,11 @@ const Header = ({
       setDisplayTodos(newTodos);
       return newTodos;
     });
+    setTodo({
+      id: 0,
+      text: "",
+      isComplete: false,
+    });
   };
 
   return (
@@ -54,6 +59,7 @@ const Header = ({
         <input
           className="header__search-text"
           style={style}
+          value={todo.text}
           type="text"
           placeholder="Create a new todo..."
           onChange={(e) => handleChange(e)}

@@ -48,7 +48,7 @@ const DoList = ({
           onDragEnter={(e) => dragEnter(e, index)}
           onDragEnd={drop}
           draggable
-          key={index}
+          key={todo.id}
         >
           <Do
             todo={todo}
