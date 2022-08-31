@@ -7,15 +7,38 @@ import Nav from "./components/Nav/Nav";
 function App() {
   const [darkTheme, setdarkTheme] = useState(false);
   const [todos, setTodos] = useState([
-    "This is the first todo",
-    "This is the second todo",
-    "This is the third todo",
-    "This is the fourth todo",
-    "This is the fifth todo",
-    "This is the sixth todo",
-    "Allow me to introduce myself",
+    {
+      id: 0,
+      text: "This is the first todo",
+      isComplete: false,
+    },
+    {
+      id: 1,
+      text: "This is the second todo",
+      isComplete: false,
+    },
+    {
+      id: 2,
+      text: "This is the third todo",
+      isComplete: false,
+    },
+    {
+      id: 3,
+      text: "This is the fourth todo",
+      isComplete: false,
+    },
+    {
+      id: 4,
+      text: "This is the fifth todo",
+      isComplete: false,
+    },
+    {
+      id: 5,
+      text: "This is the sixth todo",
+      isComplete: false,
+    },
   ]);
-  const [todo, setTodo] = useState("");
+  const [displayTodos, setDisplayTodos] = useState([...todos]);
 
   const style = {
     color: darkTheme ? "var(--l-gray)" : "var(--vdark-grayblue)",
@@ -39,10 +62,10 @@ function App() {
           darkTheme={darkTheme}
           toggleTheme={toggleTheme}
           style={style}
-          todo={todo}
           todos={todos}
           setTodos={setTodos}
-          setTodo={setTodo}
+          displayTodos={displayTodos}
+          setDisplayTodos={setDisplayTodos}
         />
       </div>
       <div className="app__main">
@@ -51,10 +74,18 @@ function App() {
           style={style}
           todos={todos}
           setTodos={setTodos}
+          displayTodos={displayTodos}
+          setDisplayTodos={setDisplayTodos}
         />
       </div>
       <div className="app__nav">
-        <Nav darkTheme={darkTheme} style={style} />
+        <Nav
+          darkTheme={darkTheme}
+          style={style}
+          todos={todos}
+          displayTodos={displayTodos}
+          setDisplayTodos={setDisplayTodos}
+        />
       </div>
       <div className="app__footer">Drag and drop to reorder list</div>
     </div>

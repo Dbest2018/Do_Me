@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import moon from "../../images/icon-moon.svg";
 import sun from "../../images/icon-sun.svg";
@@ -7,11 +7,12 @@ const Header = ({
   darkTheme,
   style,
   toggleTheme,
-  todo,
   todos,
-  setTodo,
+  displayTodos,
+  setDisplayTodos,
   setTodos,
 }) => {
+  const [todo, setTodo] = useState({});
   const headerButton = {
     border: darkTheme
       ? "1px solid var(--dark-grayblue)"
@@ -19,12 +20,22 @@ const Header = ({
   };
 
   const handleChange = (e) => {
-    setTodo(e.target.value);
+    const newId = todos.length;
+    setTodo({
+      id: newId,
+      text: e.target.value,
+      isComplete: false,
+    });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos((prevTodos) => [...prevTodos, todo]);
+    setTodos((prevTodos) => {
+      const newTodos = [...prevTodos, todo];
+      setDisplayTodos(newTodos);
+      return newTodos;
+    });
   };
+
   return (
     <div className="header">
       <div className="header__nav">

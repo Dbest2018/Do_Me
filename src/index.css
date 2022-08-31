@@ -9,6 +9,7 @@
 }
 
 :root {
+  --bright-blue: hsl(220, 98%, 61%);
   --l-gray: hsl(0, 0%, 98%);
   --vl-grayblue: hsl(236, 33%, 92%);
   --l-grayblue: hsl(233, 11%, 84%);

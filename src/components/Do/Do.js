@@ -23,6 +23,7 @@ const Do = ({ style, darkTheme, todo }) => {
 
   const toggleCompleted = () => {
     setIsCompleted((prevCompleted) => !prevCompleted);
+    todo.isComplete = !todo.isComplete;
   };
   return (
     <div className="do" style={doStyle}>
@@ -41,7 +42,7 @@ const Do = ({ style, darkTheme, todo }) => {
         ></div>
       )}
       <div className="do__text" style={textStyle}>
-        {todo}
+        {todo.text}
       </div>
       <img className="do__close" src={close} alt="close icon" />
     </div>

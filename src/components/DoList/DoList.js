@@ -8,6 +8,8 @@ const DoList = ({
   isCompleted,
   toggleCompleted,
   todos,
+  displayTodos,
+  setDisplayTodos,
   setTodos,
 }) => {
   const dragItem = useRef();
@@ -22,13 +24,13 @@ const DoList = ({
   };
 
   const drop = (e) => {
-    const dosCopy = [...todos];
+    const dosCopy = [...displayTodos];
     const dragItemContent = dosCopy[dragItem.current];
     dosCopy.splice(dragItem.current, 1);
     dosCopy.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
-    setTodos(dosCopy);
+    setDisplayTodos(dosCopy);
   };
 
   const doListStyle = {
@@ -39,7 +41,7 @@ const DoList = ({
   };
   return (
     <div className="doList" style={doListStyle}>
-      {todos.map((todo, index) => (
+      {displayTodos.map((todo, index) => (
         <div
           className="do__item"
           onDragStart={(e) => dragStart(e, index)}
