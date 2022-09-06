@@ -30,30 +30,41 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
       darkTheme ? "rgba(0, 0, 0, .2)" : "var(--l-grayblue)"
     }`,
   };
+  const mobNavStyle = {
+    ...doListStyle,
+    color: "var(--dark-grayblue)",
+  };
   return (
-    <div className="doList" style={doListStyle}>
-      {todos.map((todo, index) => (
-        <div
-          className="do__item"
-          onDragStart={(e) => dragStart(e, index)}
-          onDragEnter={(e) => dragEnter(e, index)}
-          onDragEnd={drop}
-          draggable
-          key={todo.id}
-        >
-          <Do todo={todo} darkTheme={darkTheme} style={style} />
+    <>
+      <div className="doList" style={doListStyle}>
+        {todos.map((todo, index) => (
+          <div
+            className="do__item"
+            onDragStart={(e) => dragStart(e, index)}
+            onDragEnter={(e) => dragEnter(e, index)}
+            onDragEnd={drop}
+            draggable
+            key={todo.id}
+          >
+            <Do todo={todo} darkTheme={darkTheme} style={style} />
+          </div>
+        ))}
+        <div className="doList__footer">
+          <div className="list-length">{todos.length} items left</div>
+          <div className="list__nav">
+            <div className="nav-item">All</div>
+            <div className="nav-item">Active</div>
+            <div className="nav-item">Completed</div>
+          </div>
+          <div className="list__clear">Clear Completed</div>
         </div>
-      ))}
-      <div className="doList__footer">
-        <div className="list-length">{todos.length} items left</div>
-        <div className="list__nav">
-          <div className="nav-item">All</div>
-          <div className="nav-item">Active</div>
-          <div className="nav-item">Completed</div>
-        </div>
-        <div className="list__clear">Clear Completed</div>
       </div>
-    </div>
+      <div className="mobile__nav" style={mobNavStyle}>
+        <div className="nav-item">All</div>
+        <div className="nav-item">Active</div>
+        <div className="nav-item">Completed</div>
+      </div>
+    </>
   );
 };
 
