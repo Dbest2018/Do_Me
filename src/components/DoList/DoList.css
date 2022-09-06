@@ -25,6 +25,10 @@
   color: var(--bright-blue);
   cursor: pointer;
 }
+.list__clear {
+  cursor: pointer;
+}
+
 .mobile__nav {
   display: none;
 }
