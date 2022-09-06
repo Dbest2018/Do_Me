@@ -39,7 +39,7 @@ function App() {
   ]);
 
   const style = {
-    color: darkTheme ? "var(--l-gray)" : "var(--vdark-grayblue)",
+    color: darkTheme ? "var(--dark-text)" : "var(--mdark-grayblue)",
     backgroundColor: `${darkTheme ? "var(--mdark-grayblue)" : "var(--l-gray)"}`,
   };
   const appStyle = {

@@ -9,13 +9,15 @@
 }
 
 :root {
+  --darkM-shadow: hsl(235, 21%, 11%);
+  --dark-text: hsl(234, 39%, 85%);
   --bright-blue: hsl(220, 98%, 61%);
   --l-gray: hsl(0, 0%, 98%);
   --vl-grayblue: hsl(236, 33%, 92%);
   --l-grayblue: hsl(233, 11%, 84%);
   --dark-grayblue: hsl(236, 9%, 61%);
   --mdark-grayblue: hsl(233, 14%, 35%);
-  --vdark-grayblue: hsl(235, 19%, 35%);
+  --vdark-grayblue: hsl(235, 24%, 19%);
 }
 
 body {

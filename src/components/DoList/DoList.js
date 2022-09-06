@@ -27,7 +27,7 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
   const doListStyle = {
     ...style,
     boxShadow: `0px 20px 20px ${
-      darkTheme ? "rgba(0, 0, 0, .2)" : "var(--l-grayblue)"
+      darkTheme ? "var(--darkM-shadow)" : "var(--l-grayblue)"
     }`,
   };
   const mobNavStyle = {
