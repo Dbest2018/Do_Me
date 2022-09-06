@@ -5,3 +5,23 @@
 .do__item {
   cursor: pointer;
 }
+
+.doList__footer {
+  font-size: 0.8rem;
+  color: var(--dark-grayblue);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.list__nav {
+  display: flex;
+  justify-self: center;
+}
+.nav-item {
+  margin-left: 0.75rem;
+  font-weight: 700;
+}
+.nav-item:hover {
+  color: var(--bright-blue);
+  cursor: pointer;
+}

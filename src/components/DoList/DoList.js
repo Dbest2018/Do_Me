@@ -44,6 +44,15 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
           <Do todo={todo} darkTheme={darkTheme} style={style} />
         </div>
       ))}
+      <div className="doList__footer">
+        <div className="list-length">{todos.length} items left</div>
+        <div className="list__nav">
+          <div className="nav-item">All</div>
+          <div className="nav-item">Active</div>
+          <div className="nav-item">Completed</div>
+        </div>
+        <div className="list__clear">Clear Completed</div>
+      </div>
     </div>
   );
 };
