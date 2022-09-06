@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import DoList from "./components/DoList/DoList";
 import Header from "./components/Header/Header";
-import Nav from "./components/Nav/Nav";
 
 function App() {
   const [darkTheme, setdarkTheme] = useState(false);
@@ -74,15 +73,6 @@ function App() {
           style={style}
           todos={todos}
           setTodos={setTodos}
-          displayTodos={displayTodos}
-          setDisplayTodos={setDisplayTodos}
-        />
-      </div>
-      <div className="app__nav">
-        <Nav
-          darkTheme={darkTheme}
-          style={style}
-          todos={todos}
           displayTodos={displayTodos}
           setDisplayTodos={setDisplayTodos}
         />
