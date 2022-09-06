@@ -37,7 +37,6 @@ function App() {
       isComplete: false,
     },
   ]);
-  const [displayTodos, setDisplayTodos] = useState([...todos]);
 
   const style = {
     color: darkTheme ? "var(--l-gray)" : "var(--vdark-grayblue)",
@@ -63,8 +62,6 @@ function App() {
           style={style}
           todos={todos}
           setTodos={setTodos}
-          displayTodos={displayTodos}
-          setDisplayTodos={setDisplayTodos}
         />
       </div>
       <div className="app__main">
@@ -73,8 +70,6 @@ function App() {
           style={style}
           todos={todos}
           setTodos={setTodos}
-          displayTodos={displayTodos}
-          setDisplayTodos={setDisplayTodos}
         />
       </div>
       <div className="app__footer">Drag and drop to reorder list</div>

@@ -2,16 +2,7 @@ import React, { useRef } from "react";
 import "./DoList.css";
 import Do from "../Do/Do";
 
-const DoList = ({
-  darkTheme,
-  style,
-  isCompleted,
-  toggleCompleted,
-  todos,
-  displayTodos,
-  setDisplayTodos,
-  setTodos,
-}) => {
+const DoList = ({ darkTheme, style, todos, setTodos }) => {
   const dragItem = useRef();
   const dragOverItem = useRef();
 
@@ -24,13 +15,13 @@ const DoList = ({
   };
 
   const drop = (e) => {
-    const dosCopy = [...displayTodos];
+    const dosCopy = [...todos];
     const dragItemContent = dosCopy[dragItem.current];
     dosCopy.splice(dragItem.current, 1);
     dosCopy.splice(dragOverItem.current, 0, dragItemContent);
     dragItem.current = null;
     dragOverItem.current = null;
-    setDisplayTodos(dosCopy);
+    setTodos(dosCopy);
   };
 
   const doListStyle = {
@@ -41,7 +32,7 @@ const DoList = ({
   };
   return (
     <div className="doList" style={doListStyle}>
-      {displayTodos.map((todo, index) => (
+      {todos.map((todo, index) => (
         <div
           className="do__item"
           onDragStart={(e) => dragStart(e, index)}
@@ -50,14 +41,7 @@ const DoList = ({
           draggable
           key={todo.id}
         >
-          <Do
-            todo={todo}
-            setDisplayTodos={setDisplayTodos}
-            darkTheme={darkTheme}
-            style={style}
-            isCompleted={isCompleted}
-            toggleCompleted={toggleCompleted}
-          />
+          <Do todo={todo} darkTheme={darkTheme} style={style} />
         </div>
       ))}
     </div>

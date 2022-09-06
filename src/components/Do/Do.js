@@ -3,7 +3,7 @@ import "./Do.css";
 import close from "../../images/icon-cross.svg";
 import check from "../../images/icon-check.svg";
 
-const Do = ({ style, darkTheme, todo, setDisplayTodos }) => {
+const Do = ({ style, darkTheme, todo }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const doStyle = {
     borderBottom: darkTheme
@@ -22,10 +22,7 @@ const Do = ({ style, darkTheme, todo, setDisplayTodos }) => {
   };
 
   const toggleCompleted = () => {
-    setIsCompleted((prevCompleted) => {
-      todo.isComplete = !todo.isComplete;
-      return !prevCompleted;
-    });
+    setIsCompleted((prevCompleted) => !prevCompleted);
   };
   return (
     <div className="do" style={doStyle}>

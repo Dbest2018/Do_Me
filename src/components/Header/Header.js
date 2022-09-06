@@ -3,15 +3,7 @@ import "./Header.css";
 import moon from "../../images/icon-moon.svg";
 import sun from "../../images/icon-sun.svg";
 
-const Header = ({
-  darkTheme,
-  style,
-  toggleTheme,
-  todos,
-  displayTodos,
-  setDisplayTodos,
-  setTodos,
-}) => {
+const Header = ({ darkTheme, style, toggleTheme, todos, setTodos }) => {
   const [todo, setTodo] = useState({});
   const headerButton = {
     border: darkTheme
@@ -31,7 +23,6 @@ const Header = ({
     e.preventDefault();
     setTodos((prevTodos) => {
       const newTodos = [...prevTodos, todo];
-      setDisplayTodos(newTodos);
       return newTodos;
     });
     setTodo({
