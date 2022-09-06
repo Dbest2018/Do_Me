@@ -52,6 +52,7 @@ const DoList = ({
         >
           <Do
             todo={todo}
+            setDisplayTodos={setDisplayTodos}
             darkTheme={darkTheme}
             style={style}
             isCompleted={isCompleted}
