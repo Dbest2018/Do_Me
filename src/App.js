@@ -1,42 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
 import "./App.css";
 import DoList from "./components/DoList/DoList";
 import Header from "./components/Header/Header";
 
 function App() {
   const [darkTheme, setdarkTheme] = useState(false);
-  const [todos, setTodos] = useState([
-    {
-      id: 0,
-      text: "This is the first todo",
-      isComplete: false,
-    },
-    {
-      id: 1,
-      text: "This is the second todo",
-      isComplete: false,
-    },
-    {
-      id: 2,
-      text: "This is the third todo",
-      isComplete: false,
-    },
-    {
-      id: 3,
-      text: "This is the fourth todo",
-      isComplete: false,
-    },
-    {
-      id: 4,
-      text: "This is the fifth todo",
-      isComplete: false,
-    },
-    {
-      id: 5,
-      text: "This is the sixth todo",
-      isComplete: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const querySnapshot = await getDocs(collection(db, "todo-items"));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+        setTodos((prevTodos) => [...prevTodos, doc.data()]);
+      });
+    };
+    fetchTodos();
+  }, []);
 
   const style = {
     color: darkTheme ? "var(--dark-text)" : "var(--mdark-grayblue)",

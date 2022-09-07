@@ -44,7 +44,7 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
             onDragEnter={(e) => dragEnter(e, index)}
             onDragEnd={drop}
             draggable
-            key={todo.id}
+            key={index}
           >
             <Do todo={todo} darkTheme={darkTheme} style={style} />
           </div>

@@ -1,22 +1,31 @@
 import React, { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 import "./Header.css";
 import moon from "../../images/icon-moon.svg";
 import sun from "../../images/icon-sun.svg";
 
 const Header = ({ darkTheme, style, toggleTheme, todos, setTodos }) => {
-  const [todo, setTodo] = useState({});
+  const [todo, setTodo] = useState({ text: "", status: "active" });
   const headerButton = {
     border: darkTheme
       ? "1px solid var(--dark-grayblue)"
       : "1px solid var(--l-grayblue)",
   };
 
+  const addTodo = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "todo-items"), todo);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
   const handleChange = (e) => {
-    const newId = todos.length;
     setTodo({
-      id: newId,
       text: e.target.value,
-      isComplete: false,
+      status: "active",
     });
   };
   const handleSubmit = (e) => {
@@ -25,10 +34,11 @@ const Header = ({ darkTheme, style, toggleTheme, todos, setTodos }) => {
       const newTodos = [...prevTodos, todo];
       return newTodos;
     });
+    addTodo();
+
     setTodo({
-      id: 0,
       text: "",
-      isComplete: false,
+      status: "active",
     });
   };
 
