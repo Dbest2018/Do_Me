@@ -10,14 +10,24 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
+    let active = false;
     const fetchTodos = async () => {
+      console.log("rendering");
       const querySnapshot = await getDocs(collection(db, "todo-items"));
+      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-        setTodos((prevTodos) => [...prevTodos, doc.data()]);
+        if (active) {
+          setTodos((prevTodos) => {
+            const newTodo = { id: doc.id, ...doc.data() };
+            return [...prevTodos, newTodo];
+          });
+        }
       });
     };
     fetchTodos();
+    return () => {
+      active = true;
+    };
   }, []);
 
   const style = {
