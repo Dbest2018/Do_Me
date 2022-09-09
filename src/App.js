@@ -13,7 +13,6 @@ function App() {
     let active = false;
     const fetchTodos = async () => {
       const querySnapshot = await getDocs(collection(db, "todo-items"));
-      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         if (active) {
           setTodos((prevTodos) => {
