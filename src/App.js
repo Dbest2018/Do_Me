@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     let active = false;
     const fetchTodos = async () => {
-      console.log("rendering");
       const querySnapshot = await getDocs(collection(db, "todo-items"));
       console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
