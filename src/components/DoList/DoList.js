@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 import "./DoList.css";
 import Do from "../Do/Do";
 
@@ -34,6 +36,40 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
     ...doListStyle,
     color: "var(--dark-grayblue)",
   };
+
+  const getAllTodos = async () => {
+    const todosRef = collection(db, "todo-items");
+    const q = query(todosRef, where("status", "in", ["active", "completed"]));
+    const querySnapshot = await getDocs(q);
+    const newTodos = [];
+    querySnapshot.forEach((doc) => {
+      newTodos.push(doc.data());
+    });
+    setTodos(newTodos);
+  };
+
+  const getActiveTodos = async () => {
+    const todosRef = collection(db, "todo-items");
+    const q = query(todosRef, where("status", "==", "active"));
+    const querySnapshot = await getDocs(q);
+    const newTodos = [];
+    querySnapshot.forEach((doc) => {
+      newTodos.push(doc.data());
+    });
+    setTodos(newTodos);
+  };
+
+  const getCompletedTodos = async () => {
+    const todosRef = collection(db, "todo-items");
+    const q = query(todosRef, where("status", "==", "completed"));
+    const querySnapshot = await getDocs(q);
+    const newTodos = [];
+    querySnapshot.forEach((doc) => {
+      newTodos.push(doc.data());
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <div className="doList" style={doListStyle}>
@@ -44,7 +80,7 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
             onDragEnter={(e) => dragEnter(e, index)}
             onDragEnd={drop}
             draggable
-            key={index}
+            key={todo.id ? todo.id : index}
           >
             <Do todo={todo} darkTheme={darkTheme} style={style} />
           </div>
@@ -52,17 +88,29 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
         <div className="doList__footer">
           <div className="list-length">{todos.length} items left</div>
           <div className="list__nav">
-            <div className="nav-item">All</div>
-            <div className="nav-item">Active</div>
-            <div className="nav-item">Completed</div>
+            <div className="nav-item" onClick={() => getAllTodos()}>
+              All
+            </div>
+            <div className="nav-item" onClick={() => getActiveTodos()}>
+              Active
+            </div>
+            <div className="nav-item" onClick={() => getCompletedTodos()}>
+              Completed
+            </div>
           </div>
           <div className="list__clear">Clear Completed</div>
         </div>
       </div>
       <div className="mobile__nav" style={mobNavStyle}>
-        <div className="nav-item">All</div>
-        <div className="nav-item">Active</div>
-        <div className="nav-item">Completed</div>
+        <div className="nav-item" onClick={() => getAllTodos()}>
+          All
+        </div>
+        <div className="nav-item" onClick={() => getActiveTodos()}>
+          Active
+        </div>
+        <div className="nav-item" onClick={() => getCompletedTodos()}>
+          Completed
+        </div>
       </div>
     </>
   );

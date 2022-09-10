@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import "./Do.css";
@@ -6,7 +6,11 @@ import close from "../../images/icon-cross.svg";
 import check from "../../images/icon-check.svg";
 
 const Do = ({ style, darkTheme, todo }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(todo.status);
+
+  useEffect(() => {
+    setIsCompleted(todo.status);
+  }, [todo]);
   const doStyle = {
     borderBottom: darkTheme
       ? "1px solid var(--dark-grayblue)"
@@ -19,27 +23,32 @@ const Do = ({ style, darkTheme, todo }) => {
   };
   const textStyle = {
     ...style,
-    textDecoration: isCompleted && "line-through",
-    color: isCompleted ? "var(--dark-grayblue)" : "inherit",
+    textDecoration: todo.status === "completed" && "line-through",
+    color: todo.status === "completed" ? "var(--dark-grayblue)" : "inherit",
   };
 
-  const updateTodo = async (status) => {
+  const updateTodo = async (newStatus = "") => {
     const statusRef = doc(db, "todo-items", todo.id);
+    console.log(statusRef);
     await updateDoc(statusRef, {
-      status: status ? "completed" : "active",
+      status: newStatus,
     });
   };
 
   const toggleCompleted = () => {
+    // console.log(todo);
     setIsCompleted((prevCompleted) => {
-      const nowCompleted = !prevCompleted;
+      let nowCompleted = "active";
+      if (prevCompleted === "active") {
+        nowCompleted = "completed";
+      }
       updateTodo(nowCompleted);
       return nowCompleted;
     });
   };
   return (
     <div className="do" style={doStyle}>
-      {isCompleted ? (
+      {todo.status === "completed" ? (
         <img
           className="do__check"
           onClick={() => toggleCompleted()}
