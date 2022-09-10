@@ -5,7 +5,8 @@ import "./Do.css";
 import close from "../../images/icon-cross.svg";
 import check from "../../images/icon-check.svg";
 
-const Do = ({ style, darkTheme, todo }) => {
+const Do = ({ style, darkTheme, todo, setTodos }) => {
+  // eslint-disable-next-line no-unused-vars
   const [isCompleted, setIsCompleted] = useState(todo.status);
 
   useEffect(() => {
@@ -29,7 +30,6 @@ const Do = ({ style, darkTheme, todo }) => {
 
   const updateTodo = async (newStatus = "") => {
     const statusRef = doc(db, "todo-items", todo.id);
-    console.log(statusRef);
     await updateDoc(statusRef, {
       status: newStatus,
     });
@@ -43,6 +43,14 @@ const Do = ({ style, darkTheme, todo }) => {
         nowCompleted = "completed";
       }
       updateTodo(nowCompleted);
+      setTodos((prevTodos) => {
+        return prevTodos.map((prevTodo) => {
+          if (prevTodo.id === todo.id) {
+            prevTodo.status = nowCompleted;
+          }
+          return prevTodo;
+        });
+      });
       return nowCompleted;
     });
   };

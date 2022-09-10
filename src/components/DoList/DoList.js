@@ -82,7 +82,12 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
             draggable
             key={todo.id ? todo.id : index}
           >
-            <Do todo={todo} darkTheme={darkTheme} style={style} />
+            <Do
+              todo={todo}
+              darkTheme={darkTheme}
+              style={style}
+              setTodos={setTodos}
+            />
           </div>
         ))}
         <div className="doList__footer">
