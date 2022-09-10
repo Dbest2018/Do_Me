@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import "./Do.css";
 import close from "../../images/icon-cross.svg";
@@ -32,6 +32,13 @@ const Do = ({ style, darkTheme, todo, setTodos }) => {
     const statusRef = doc(db, "todo-items", todo.id);
     await updateDoc(statusRef, {
       status: newStatus,
+    });
+  };
+
+  const deleteTodo = async () => {
+    await deleteDoc(doc(db, "todo-items", todo.id));
+    setTodos((prevTodos) => {
+      return prevTodos.filter((prevTodo) => prevTodo.id !== todo.id);
     });
   };
 
@@ -73,7 +80,12 @@ const Do = ({ style, darkTheme, todo, setTodos }) => {
       <div className="do__text" style={textStyle}>
         {todo.text}
       </div>
-      <img className="do__close" src={close} alt="close icon" />
+      <img
+        className="do__close"
+        src={close}
+        alt="close icon"
+        onClick={() => deleteTodo()}
+      />
     </div>
   );
 };
