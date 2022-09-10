@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 import "./Do.css";
 import close from "../../images/icon-cross.svg";
 import check from "../../images/icon-check.svg";
@@ -21,8 +23,19 @@ const Do = ({ style, darkTheme, todo }) => {
     color: isCompleted ? "var(--dark-grayblue)" : "inherit",
   };
 
+  const updateTodo = async (status) => {
+    const statusRef = doc(db, "todo-items", todo.id);
+    await updateDoc(statusRef, {
+      status: status ? "completed" : "active",
+    });
+  };
+
   const toggleCompleted = () => {
-    setIsCompleted((prevCompleted) => !prevCompleted);
+    setIsCompleted((prevCompleted) => {
+      const nowCompleted = !prevCompleted;
+      updateTodo(nowCompleted);
+      return nowCompleted;
+    });
   };
   return (
     <div className="do" style={doStyle}>
