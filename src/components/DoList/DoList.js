@@ -70,6 +70,13 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
     setTodos(newTodos);
   };
 
+  const clearCompletedTodos = async () => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((prevTodo) => prevTodo.status === "active");
+    });
+  };
+  // await deleteDoc(doc(db, "todo-items", prevTodo.id));
+
   return (
     <>
       <div className="doList" style={doListStyle}>
@@ -103,7 +110,9 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
               Completed
             </div>
           </div>
-          <div className="list__clear">Clear Completed</div>
+          <div className="list__clear" onClick={() => clearCompletedTodos()}>
+            Clear Completed
+          </div>
         </div>
       </div>
       <div className="mobile__nav" style={mobNavStyle}>
