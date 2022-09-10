@@ -75,7 +75,6 @@ const DoList = ({ darkTheme, style, todos, setTodos }) => {
       return prevTodos.filter((prevTodo) => prevTodo.status === "active");
     });
   };
-  // await deleteDoc(doc(db, "todo-items", prevTodo.id));
 
   return (
     <>
