@@ -43,7 +43,6 @@ const Do = ({ style, darkTheme, todo, setTodos }) => {
   };
 
   const toggleCompleted = () => {
-    // console.log(todo);
     setIsCompleted((prevCompleted) => {
       let nowCompleted = "active";
       if (prevCompleted === "active") {
