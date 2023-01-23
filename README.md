@@ -18,11 +18,11 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 
 ### Screenshot
 
-#### Desktop Layout
+#### Desktop View
 
 ![](./public/design/desktop-design-light.jpg)
 
-#### Mobile Layout
+#### Mobile View
 
 ![](./public/design/mobile-design-light.jpg)
 
